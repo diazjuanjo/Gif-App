@@ -10,16 +10,30 @@ export const GifApp = () => {
     // console.log(e)
   };
 
+  const handleRemoveCategory = (category) => {
+    setCategories(categories.filter((_category) => _category !== category));
+  };
+
+  const handleReset = () => {
+    setCategories([]);
+  };
+
   return (
     <>
       {/* Titulo */}
       <h1>GifApp</h1>
       {/* Input */}
       <AddCategory addCategory={handleAddCategory} />
-      {/* Listado de Gif */}
+      {categories.length !== 0? <button onClick={() => handleReset()}>Reset</button> : ''}
+      
 
+      {/* Listado de Gif */}
       {categories.map((category) => (
-        <GifGrid key={category} category={category} />
+        <GifGrid
+          key={category}
+          category={category}
+          handleRemoveCategory={handleRemoveCategory}
+        />
       ))}
     </>
   );
