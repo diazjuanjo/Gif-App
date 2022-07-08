@@ -22,11 +22,11 @@ export const GifApp = () => {
     <>
       {/* Titulo */}
       <h1>GifApp</h1>
+      {categories.length !== 0? <button className="boton" onClick={() => handleReset()}>Reset</button> : ''}
+
       {/* Input */}
       <AddCategory addCategory={handleAddCategory} />
-      {categories.length !== 0? <button onClick={() => handleReset()}>Reset</button> : ''}
       
-
       {/* Listado de Gif */}
       {categories.map((category) => (
         <GifGrid
